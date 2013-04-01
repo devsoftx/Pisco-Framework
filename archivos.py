@@ -1,13 +1,21 @@
 def printLine():
 	print("###################################")
 
+def ReadFile(fname, mode):
+	with open(fname,mode) as reader:
+		data = reader.read()
+		reader.close()
+		print(str(data))
+
+def WriteInFile(fname,mode,text):
+	with open(fname,mode) as writter:
+		writter.write(text)
+		writter.close()
+
 printLine()
-fileInDisk = open('PYTHONSTARTUP' , 'r')
-w = fileInDisk.read()
-print(str(w))
+ReadFile('PYTHONSTARTUP','r')
+input_text = input("Ingrese su comentario: ")
+if len(input_text) != 0 :
+	WriteInFile('PYTHONSTARTUP','a',input_text)
 printLine()
-print("Ejecutando un archivo .py")
-exec(open('diccionarios.py' , 'r').read())
-printLine()
-writter = open('PYTHONSTARTUP','w')
-writter.write('New text from writter')
+ReadFile('PYTHONSTARTUP','r')
